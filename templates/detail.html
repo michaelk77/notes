@@ -1,0 +1,12 @@
+{% include 'base.html' %}
+
+<h1>{{ note.title }}</h1>
+<h3>{{ note.content }}</h3>
+<button onclick="navigator.clipboard.writeText({{ note.content }})">copy
+    text
+</button>
+<p>Created at: {{ note.created_at }}</p>
+<p>Updated at: {{ note.updated_at }}</p>
+<a href="{% url 'update' pk=note.pk %}">Edit</a>
+<a href="{% url 'delete' pk=note.pk %}">Delete</a>
+
