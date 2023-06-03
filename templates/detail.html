@@ -1,12 +1,16 @@
-{% include 'base.html' %}
+{% block content %}
+  <div class="container" style="border: 1px solid black; padding: 100px; margin: 10%; text-align: center; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+    <h2>
+      <a href="{% url 'index' %}" style="color: black">Home</a>
+      <a href="{% url 'create' %}" style="color: black">Create a new note</a>
+    </h2>
 
-<h1>{{ note.title }}</h1>
-<h3>{{ note.content }}</h3>
-<button onclick="navigator.clipboard.writeText({{ note.content }})">copy
-    text
-</button>
-<p>Created at: {{ note.created_at }}</p>
-<p>Updated at: {{ note.updated_at }}</p>
-<a href="{% url 'update' pk=note.pk %}">Edit</a>
-<a href="{% url 'delete' pk=note.pk %}">Delete</a>
-
+    <h1>{{ note.title }}</h1>
+    <h3>{{ note.content }}</h3>
+    <button onclick="navigator.clipboard.writeText('{{ note.content }}')">copy text</button>
+    <p>Created at: {{ note.created_at }}</p>
+    <p>Updated at: {{ note.updated_at }}</p>
+    <a href="{% url 'update' pk=note.pk %}">Edit</a>
+    <a href="{% url 'delete' pk=note.pk %}">Delete</a>
+  </div>
+{% endblock %}

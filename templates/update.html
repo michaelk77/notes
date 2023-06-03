@@ -1,10 +1,15 @@
-{% include 'base.html' %}
-
 {% block content %}
+  <div class="container" style="border: 1px solid black; padding: 100px; margin: 10%; text-align: center; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);">
+    <h2>
+      <a href="{% url 'index' %}" style="color: black">Home</a>
+      <a href="{% url 'create' %}" style="color: black">Create a new note</a>
+    </h2>
+
     <h1>Edit {{ note.title }}</h1>
     <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save</button>
     </form>
+  </div>
 {% endblock %}
